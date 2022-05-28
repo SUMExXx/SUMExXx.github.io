@@ -1,6 +1,5 @@
 html {
     font-size: 10px;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
@@ -10,7 +9,7 @@ body {
     height: 100%;
     min-height: 100%;
     font-size: 15px;
-    font-family: poppins, Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
     line-height: 1.65em;
     overflow: hidden;
     color: #d5d5d5;
@@ -55,9 +54,9 @@ body {
 }
 
 .page-content {
+    display: flex;
     position: relative;
     width: 100%;
-    max-width: 1280px;
     min-height: 80vh;
     margin: 10vh auto;
     padding: 0;
@@ -73,10 +72,10 @@ body {
 }
 
 .header-site {
-    display: inline-block;
+    display: block;
     
-    width: 100%;
-    max-width: 380px;
+    width: 40%;
+    
     height: 100%;
     max-height: 80vh;
     min-height: inherit;
@@ -202,10 +201,12 @@ body {
 }
 
 .content-area {
-    display: inline-block;
+    display: block;
+    
     background-color: #222;
+    height: 100%;
     width: 100%;
-    max-width: 895px;
+    
     border-radius: 32px;
     background-repeat: no-repeat;
     background-position: center;
