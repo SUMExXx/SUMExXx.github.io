@@ -248,3 +248,38 @@ body {
     font-size: 1.5em;
     color: gray;
 }
+
+@media screen and (max-width: 1000px){
+    .content-area{
+        display: none;
+    }
+
+    .page-content{
+        display:block;
+        justify-content: center;
+        
+        width: 80%;
+        height: 80%;
+        min-height: 0%;
+    }
+
+    .page{
+        padding: 0;
+        box-sizing: content-box;
+        background-color: transparent;
+        
+    }
+
+    *, ::before, ::after{
+        box-sizing: initial;
+    }
+
+    .header-site{
+        padding: 10% 0 10% 0;
+        width: 100%;
+    }
+
+    .header-photo{
+        width: 100%;
+    }
+}
