@@ -98,7 +98,7 @@ body {
     
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-color: white;
-    max-width: 100%;
+    width: 180px;
     background-color: #fff;
     border: 3px px solid #fff;
     border-radius: 50%;
@@ -281,5 +281,11 @@ body {
 
     .header-photo{
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .image{
+        width: 90%;
     }
 }
