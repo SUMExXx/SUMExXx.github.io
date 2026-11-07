@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+set -e
+
+echo "Running lint-staged on staged files..."
+npx lint-staged || { echo "Lint-staged failed. Commit aborted."; exit 1; }
+
+# next build typechecks, so there is no separate typecheck step.
+echo "Building the site into the repo root..."
+npm run build || { echo "Build failed. Commit aborted."; exit 1; }
+
+# Ship the regenerated index.html / index.css / _next/ ... in this same commit.
+# Only the top-level names the export produced are staged, never src/ edits you left unstaged.
+git add -A -- $(ls -A out)
+
+echo "All pre-commit checks passed successfully."
