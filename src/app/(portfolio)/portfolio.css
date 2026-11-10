@@ -1,0 +1,576 @@
+/*
+ * publish-root merges every CSS chunk into one /index.css shared by all pages; everything here is
+ * scoped under body.sd3.
+ *
+ * Performance rules this file follows: no backdrop-filter, no mix-blend-mode, no animated filters
+ * or box-shadows. Glows are static; motion is transform/opacity only.
+ */
+
+@property --sd-glow-a {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: #3b0a66;
+}
+@property --sd-glow-b {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: #0b3d12;
+}
+
+body.sd3 {
+	--sd-green: #37f713;
+	--sd-purple: #7e12c3;
+	--sd-purple-2: #9b2cf0;
+	--sd-violet: #af8bff;
+	--sd-lilac: #8466c7;
+	--sd-bg: #030106;
+	--sd-fill: rgba(9, 4, 16, 0.86);
+	background: var(--sd-bg);
+	background-image: none;
+	color: #fff;
+	height: auto;
+	font-family: var(--font-body), system-ui, sans-serif;
+	overflow-x: clip;
+}
+/* Every page in the app is sd3, so the root rule needs no :has() (which widens style invalidation). */
+html {
+	overflow-x: clip;
+}
+
+.sd3 .font-mono {
+	font-family: var(--font-mono), ui-monospace, monospace;
+}
+.sd3 .sd3-display {
+	font-family: var(--font-display), system-ui, sans-serif;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+}
+.sd3 ::selection {
+	background: var(--sd-green);
+	color: #000;
+}
+
+/* ── stage ── */
+.sd3 .sd3-backdrop {
+	position: fixed;
+	inset: 0;
+	z-index: -2;
+	background:
+		radial-gradient(60% 50% at 80% 20%, var(--sd-glow-a), transparent 70%),
+		radial-gradient(55% 45% at 10% 90%, var(--sd-glow-b), transparent 70%),
+		var(--sd-bg);
+	opacity: 0.55;
+	/* Non-inherited registered colours transition on this one element only, never the whole tree. */
+	transition:
+		--sd-glow-a 1.4s ease,
+		--sd-glow-b 1.4s ease;
+}
+.sd3 .sd3-canvas {
+	position: fixed !important;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+}
+.sd3 .sd3-vignette {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	background:
+		radial-gradient(ellipse at center, transparent 45%, rgba(3, 1, 6, 0.8) 100%),
+		repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.022) 0 1px, transparent 1px 3px);
+}
+.sd3 main,
+.sd3 footer {
+	position: relative;
+	z-index: 2;
+}
+
+/* ── boot ── */
+.sd3 .sd3-boot {
+	position: fixed;
+	inset: 0;
+	z-index: 100;
+	display: grid;
+	place-items: center;
+	background: var(--sd-bg);
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	transition:
+		clip-path 0.9s cubic-bezier(0.76, 0, 0.24, 1),
+		visibility 0s 0.9s;
+}
+.sd3 .sd3-boot.is-done {
+	clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+	visibility: hidden;
+}
+.sd3 .sd3-boot-line {
+	opacity: 0;
+	animation: sd3-in 0.25s forwards;
+}
+.sd3 .sd3-boot-bar {
+	height: 4px;
+	width: 280px;
+	background: linear-gradient(90deg, var(--sd-purple), var(--sd-green));
+	clip-path: polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
+	transform-origin: left;
+	animation: sd3-bar 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+@keyframes sd3-in {
+	to {
+		opacity: 1;
+	}
+}
+@keyframes sd3-bar {
+	from {
+		transform: scaleX(0);
+	}
+}
+
+/* ── cursor ── */
+.sd3-has-cursor,
+.sd3-has-cursor * {
+	cursor: none !important;
+}
+.sd3 .sd3-cursor-dot,
+.sd3 .sd3-cursor-ring {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 200;
+	pointer-events: none;
+	will-change: transform;
+}
+.sd3 .sd3-cursor-dot {
+	width: 6px;
+	height: 6px;
+	margin: -3px 0 0 -3px;
+	background: var(--sd-green);
+}
+.sd3 .sd3-cursor-ring {
+	width: 30px;
+	height: 30px;
+	margin: -15px 0 0 -15px;
+	border: 1px solid rgba(175, 139, 255, 0.7);
+	transition:
+		width 0.25s,
+		height 0.25s,
+		margin 0.25s,
+		border-color 0.25s,
+		background 0.25s;
+}
+.sd3 .sd3-cursor-ring.is-hot {
+	width: 46px;
+	height: 46px;
+	margin: -23px 0 0 -23px;
+	border-color: var(--sd-green);
+	background: rgba(55, 247, 19, 0.08);
+}
+@media (pointer: coarse) {
+	.sd3 .sd3-cursor-dot,
+	.sd3 .sd3-cursor-ring {
+		display: none;
+	}
+}
+
+/* ── shape system (from the original site: chamfers, trapezoids, angled bars) ── */
+
+/* Chamfered panel: an outer clip carries the gradient border, ::before carries the fill. */
+.sd3 .sd3-panel {
+	--cut: 18px;
+	--bd: linear-gradient(135deg, rgba(175, 139, 255, 0.55), rgba(126, 18, 195, 0.25) 40%, rgba(55, 247, 19, 0.35));
+	position: relative;
+	isolation: isolate;
+	background: var(--bd);
+	clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
+}
+.sd3 .sd3-panel::before {
+	content: '';
+	position: absolute;
+	inset: 1px;
+	z-index: -1;
+	background: var(--sd-fill);
+	clip-path: inherit;
+}
+/* Signature accent: a green trapezoid strip on the top edge. */
+.sd3 .sd3-panel::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: calc(var(--cut) + 14px);
+	width: 72px;
+	height: 4px;
+	background: var(--sd-green);
+	clip-path: polygon(0 0, 100% 0, calc(100% - 4px) 100%, 4px 100%);
+	transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sd3 .sd3-panel:hover::after,
+.sd3 a:hover > .sd3-panel::after {
+	width: 140px;
+}
+.sd3 .sd3-panel.is-alt {
+	clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut)));
+}
+.sd3 .sd3-panel.is-alt::after {
+	background: var(--sd-violet);
+}
+
+/* Trapezoid tab, the shape of the original section titles. */
+.sd3 .sd3-tab {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	padding: 8px 34px;
+	background: var(--sd-purple);
+	clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 100%, 0 100%);
+	color: #fff;
+}
+.sd3 .sd3-tab-rule {
+	height: 2px;
+	background: linear-gradient(90deg, var(--sd-purple), var(--sd-violet) 30%, transparent);
+}
+
+/* Angled buttons. */
+.sd3 .sd3-btn {
+	--c: 12px;
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 14px 26px;
+	clip-path: polygon(var(--c) 0, 100% 0, 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, 0 100%, 0 var(--c));
+	font-family: var(--font-mono), monospace;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	transition:
+		background 0.3s,
+		color 0.3s;
+}
+.sd3 .sd3-btn-primary {
+	background: var(--sd-green);
+	color: #000;
+	font-weight: 700;
+}
+.sd3 .sd3-btn-primary:hover {
+	background: #fff;
+}
+.sd3 .sd3-btn-ghost {
+	position: relative;
+	isolation: isolate;
+	background: linear-gradient(135deg, var(--sd-violet), var(--sd-purple));
+	color: #fff;
+}
+.sd3 .sd3-btn-ghost::before {
+	content: '';
+	position: absolute;
+	inset: 1px;
+	z-index: -1;
+	background: #0a0512;
+	clip-path: inherit;
+	transition: background 0.3s;
+}
+.sd3 .sd3-btn-ghost:hover {
+	color: var(--sd-green);
+	background: var(--sd-green);
+}
+.sd3 .sd3-btn-ghost:hover::before {
+	background: #07120a;
+}
+
+/* Parallelogram chips. */
+.sd3 .sd3-chip {
+	display: inline-block;
+	padding: 4px 14px;
+	background: rgba(126, 18, 195, 0.22);
+	color: rgba(255, 255, 255, 0.85);
+	clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+	font-family: var(--font-mono), monospace;
+	font-size: 12px;
+}
+.sd3 .sd3-chip-sm {
+	padding: 2px 11px;
+	font-size: 11px;
+}
+
+/* Full-width bar with a centre trapezoid notch, like the original footer edge. */
+.sd3 .sd3-notch {
+	position: relative;
+	height: 40px;
+	margin: 0 auto;
+	max-width: 1200px;
+}
+.sd3 .sd3-notch::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 19px;
+	height: 2px;
+	background: linear-gradient(90deg, transparent, var(--sd-purple) 20%, var(--sd-purple) 80%, transparent);
+}
+.sd3 .sd3-notch::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 8px;
+	width: 220px;
+	height: 24px;
+	margin-left: -110px;
+	background: var(--sd-purple);
+	clip-path: polygon(0 0, 100% 0, calc(100% - 20px) 100%, 20px 100%);
+}
+
+/* HUD corner brackets around media. */
+.sd3 .sd3-hud {
+	position: relative;
+}
+.sd3 .sd3-hud::after {
+	content: '';
+	position: absolute;
+	inset: -8px;
+	pointer-events: none;
+	--b: 2px;
+	--l: 22px;
+	background:
+		linear-gradient(var(--sd-green) 0 0) top left / var(--l) var(--b),
+		linear-gradient(var(--sd-green) 0 0) top left / var(--b) var(--l),
+		linear-gradient(var(--sd-green) 0 0) top right / var(--l) var(--b),
+		linear-gradient(var(--sd-green) 0 0) top right / var(--b) var(--l),
+		linear-gradient(var(--sd-violet) 0 0) bottom left / var(--l) var(--b),
+		linear-gradient(var(--sd-violet) 0 0) bottom left / var(--b) var(--l),
+		linear-gradient(var(--sd-violet) 0 0) bottom right / var(--l) var(--b),
+		linear-gradient(var(--sd-violet) 0 0) bottom right / var(--b) var(--l);
+	background-repeat: no-repeat;
+}
+
+/* ── type ── */
+.sd3 .sd3-grad-text {
+	background: linear-gradient(100deg, #fff 10%, var(--sd-green) 45%, var(--sd-violet) 85%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+.sd3 .sd3-outline-text {
+	color: transparent;
+	-webkit-text-stroke: 1.5px rgba(175, 139, 255, 0.9);
+}
+.sd3 .sd3-hl {
+	color: var(--sd-green);
+}
+.sd3 .sd3-caret {
+	display: inline-block;
+	width: 0.55em;
+	height: 1.1em;
+	margin-left: 2px;
+	vertical-align: -0.18em;
+	background: var(--sd-green);
+	animation: sd3-blink 1s steps(1) infinite;
+}
+@keyframes sd3-blink {
+	50% {
+		opacity: 0;
+	}
+}
+.sd3 .sd3-link {
+	position: relative;
+	color: var(--sd-green);
+}
+.sd3 .sd3-link::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -3px;
+	height: 1px;
+	background: currentColor;
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sd3 .sd3-link:hover::after {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+/* Scroll-filled paragraph: each word lights up as --p (set from scroll) passes its index. */
+.sd3 .sd3-fill-word {
+	opacity: clamp(0.14, calc((var(--p, 0) - var(--i)) * 18 + 0.14), 1);
+	transition: opacity 0.1s linear;
+}
+
+/* Velocity bands: giant outlined words driven by scroll position and speed. */
+.sd3 .sd3-band {
+	white-space: nowrap;
+	will-change: transform;
+	font-family: var(--font-display), sans-serif;
+	font-weight: 800;
+	font-size: clamp(56px, 11vw, 180px);
+	line-height: 1;
+	letter-spacing: -0.03em;
+}
+.sd3 .sd3-band .o {
+	color: transparent;
+	-webkit-text-stroke: 1px rgba(175, 139, 255, 0.55);
+}
+.sd3 .sd3-band .f {
+	color: rgba(55, 247, 19, 0.9);
+}
+
+/* Big index numbers behind section heads, parallaxed. */
+.sd3 .sd3-ghost-num {
+	position: absolute;
+	right: 0;
+	top: -40px;
+	font-family: var(--font-display), sans-serif;
+	font-weight: 800;
+	font-size: clamp(120px, 22vw, 320px);
+	line-height: 1;
+	color: transparent;
+	-webkit-text-stroke: 1px rgba(126, 18, 195, 0.35);
+	pointer-events: none;
+	user-select: none;
+	will-change: transform;
+}
+
+/* ── skills orb ── */
+.sd3 .sd3-orb-tag {
+	padding: 3px 12px;
+	clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+	transition:
+		color 0.3s,
+		background 0.3s;
+}
+.sd3 .sd3-orb-tag.is-on {
+	color: #fff;
+	background: rgba(55, 247, 19, 0.16);
+}
+.sd3 .sd3-orb-tag.is-off {
+	color: rgba(255, 255, 255, 0.25);
+}
+
+/* ── system diagram ── */
+.sd3 .sd3-sys-dot {
+	width: 12px;
+	height: 12px;
+	margin-top: 12px;
+	background: var(--sd-green);
+	clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+	flex-shrink: 0;
+}
+.sd3 .sd3-sys-wire {
+	position: relative;
+	flex: 1;
+	width: 2px;
+	background: rgba(175, 139, 255, 0.3);
+	overflow: hidden;
+}
+.sd3 .sd3-sys-wire::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	width: 2px;
+	height: 14px;
+	background: var(--sd-green);
+	animation: sd3-packet 1.6s linear infinite;
+	animation-delay: inherit;
+}
+@keyframes sd3-packet {
+	from {
+		transform: translateY(-14px);
+	}
+	to {
+		transform: translateY(400%);
+	}
+}
+
+/* ── form ── */
+.sd3 .sd3-field {
+	width: 100%;
+	padding: 14px 16px;
+	background: rgba(9, 4, 16, 0.9);
+	border: 1px solid rgba(175, 139, 255, 0.3);
+	color: #fff;
+	font-size: 15px;
+	clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+	transition: border-color 0.25s;
+}
+.sd3 .sd3-field:focus {
+	outline: none;
+	border-color: var(--sd-green);
+}
+.sd3 .sd3-field::placeholder {
+	color: rgba(255, 255, 255, 0.3);
+}
+
+/* ── misc ── */
+.sd3 .sd3-pulse {
+	animation: sd3-pulse 1.6s ease-in-out infinite;
+}
+@keyframes sd3-pulse {
+	50% {
+		opacity: 0.3;
+	}
+}
+.sd3 .sd3-scroll-line {
+	width: 2px;
+	height: 48px;
+	background: linear-gradient(var(--sd-green), transparent);
+	animation: sd3-drop 2s ease-in-out infinite;
+	transform-origin: top;
+}
+@keyframes sd3-drop {
+	0% {
+		transform: scaleY(0);
+	}
+	50% {
+		transform: scaleY(1);
+	}
+	100% {
+		transform: scaleY(0);
+		transform-origin: bottom;
+	}
+}
+.sd3 .sd3-burger,
+.sd3 .sd3-burger::before {
+	display: block;
+	width: 18px;
+	height: 2px;
+	background: #fff;
+	transition: transform 0.3s;
+	position: relative;
+}
+.sd3 .sd3-burger::before {
+	content: '';
+	position: absolute;
+	top: 6px;
+}
+.sd3 .sd3-burger {
+	transform: translateY(-3px);
+}
+.sd3 .sd3-burger.is-open {
+	transform: rotate(45deg);
+}
+.sd3 .sd3-burger.is-open::before {
+	transform: translateY(-6px) rotate(-90deg);
+}
+
+/* Blog article typography. */
+.sd3 .sd3-prose {
+	color: rgba(255, 255, 255, 0.78);
+	font-size: 17px;
+	line-height: 1.8;
+}
+.sd3 .sd3-prose a {
+	color: var(--sd-green);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sd3 *,
+	.sd3 *::before,
+	.sd3 *::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+	}
+}

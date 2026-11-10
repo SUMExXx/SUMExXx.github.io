@@ -1,0 +1,44 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/1ua2kfq9s-me6.js"
+3:I[39756,["$2"],"default"]
+4:I[37457,["$2"],"default"]
+9:"/_next/static/chunks/019rvcojw5kyt.js"
+a:"/_next/static/chunks/0566xv07l9w9r.js"
+b:"/_next/static/chunks/1m6srf9ommorg.js"
+c:I[44500,["$9","$a","$b"],"default"]
+d:I[39365,["$9","$a","$b"],"default"]
+e:I[39365,["$9","$a","$b"],"Footer"]
+11:"/_next/static/chunks/03e5yy98_mgss.js"
+12:"/_next/static/chunks/433ou7lownleu.js"
+13:I[49000,["$9","$a","$b","$11","$12"],"default"]
+14:I[62332,["$9","$a","$b","$11","$12"],"About"]
+15:I[73219,["$9","$a","$b","$11","$12"],"VelocityBand"]
+16:I[62332,["$9","$a","$b","$11","$12"],"Experience"]
+17:I[62332,["$9","$a","$b","$11","$12"],"Projects"]
+18:I[62332,["$9","$a","$b","$11","$12"],"Skills"]
+19:I[62332,["$9","$a","$b","$11","$12"],"Education"]
+1a:I[62332,["$9","$a","$b","$11","$12"],"Timeline"]
+1b:I[62332,["$9","$a","$b","$11","$12"],"Contact"]
+1c:I[97367,["$2"],"OutletBoundary"]
+1d:"$Sreact.suspense"
+20:"ViewportBoundary"
+21:I[97367,["$2"],"$20"]
+22:"MetadataBoundary"
+23:I[97367,["$2"],"$22"]
+24:I[27201,["$2"],"IconMark"]
+:HL["/_next/static/chunks/2z6y0dkeo_uko.css","style"]
+6:X
+6:C
+7:X
+10:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","main",null,{"children":[["$","$L13",null,{}],["$","$L14",null,{}],["$","$L15",null,{"words":["MCP SERVERS","LANGGRAPH AGENTS","SPRING AI","NEXT.JS","RUST RUNTIMES"]}],["$","$L15",null,{"words":["FASTAPI","TEMPORAL","POSTGRES","REDIS","AWS","GRAFANA"],"reverse":true}],["$","$L16",null,{}],["$","$L17",null,{}],["$","$L18",null,{}],["$","$L19",null,{}],["$","$L1a",null,{}],["$","$L15",null,{"words":["LET'S BUILD","SOMETHING","AMBITIOUS"]}],["$","$L1b",null,{}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/03e5yy98_mgss.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/433ou7lownleu.js","async":true}]],["$","$L1c",null,{"children":["$","$1d",null,{"name":"Next.MetadataOutlet","children":"$@1e"}]}]]}],"p":"$@1f","v":null,"s":"$7"}}]]
+8:[["children",{"s":"(portfolio)","h":112,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2z6y0dkeo_uko.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/019rvcojw5kyt.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0566xv07l9w9r.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/1m6srf9ommorg.js","async":true}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"sd3 TkWB7W_variable p9PK3a_variable CxiPNW_variable antialiased","children":["$","$Lc",null,{"children":[["$","$Ld",null,{}],["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:t:t:d:r:props:children:1:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:t:t:d:r:props:children:1:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]]}],["$","$Le",null,{}]]}]}]}]]}],"p":"$@f","v":null,"s":"$7"},"c":"$Q10"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]]}],"p":"$@5","v":"$6","s":"$7"},"c":"$Q8"},"h":{"r":["$","$1","h",{"children":[null,["$","$L21",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#030106"}]]}],["$","$L23",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Suman Debnath"}],["$","meta","1",{"name":"description","content":"Suman Debnath: Full-Stack AI Platform Engineer building MCP servers, LangGraph agents, Spring AI and Spring Boot backends, and Next.js frontends."}],["$","link","2",{"rel":"author","href":"https://www.linkedin.com/in/suman-debnath6"}],["$","meta","3",{"name":"author","content":"Suman Debnath"}],["$","meta","4",{"name":"keywords","content":"Suman,Debnath,Suman Debnath,Web,Web Developer,Flutter,Flutter Developer,profile,blog,NextJS,SGSITS,Computer,Science,Engineering,Engineer,Software,Developer"}],["$","meta","5",{"name":"creator","content":"Suman Debnath"}],["$","meta","6",{"name":"google-adsense-account","content":"ca-pub-2246017499375159"}],["$","meta","7",{"name":"google-site-verification","content":"u_ExZBcFIU6jz7OJ4L7bORzuQbPqF3MRksHVsMlWQv4"}],["$","meta","8",{"property":"og:title","content":"Suman Debnath"}],["$","meta","9",{"property":"og:description","content":"Suman Debnath: Full-Stack AI Platform Engineer building MCP servers, LangGraph agents, Spring AI and Spring Boot backends, and Next.js frontends."}],["$","meta","10",{"property":"og:url","content":"https://sumexxx.github.io/"}],["$","meta","11",{"property":"og:site_name","content":"Suman Debnath"}],["$","meta","12",{"property":"og:locale","content":"en_US"}],["$","meta","13",{"property":"og:image","content":"https://sumexxx.github.io/images/opengraph-image.png"}],["$","meta","14",{"property":"og:image:width","content":"1920"}],["$","meta","15",{"property":"og:image:height","content":"1080"}],["$","meta","16",{"property":"og:image:alt","content":"Image description"}],["$","meta","17",{"property":"og:type","content":"website"}],["$","meta","18",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","19",{"name":"twitter:creator","content":"@SUMExXx666"}],["$","meta","20",{"name":"twitter:title","content":"Suman Debnath"}],["$","meta","21",{"name":"twitter:description","content":"Suman Debnath: Full-Stack AI Platform Engineer building MCP servers, LangGraph agents, Spring AI and Spring Boot backends, and Next.js frontends."}],["$","meta","22",{"name":"twitter:image","content":"https://sumexxx.github.io/images/opengraph-image.png"}],["$","link","23",{"rel":"icon","href":"/favicon.ico?favicon.1ngwem6g790zf.ico","sizes":"48x48","type":"image/x-icon"}],["$","$L24","24",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@25","v":null,"s":"$7"}},"a":"$@26","u":"$@27","b":"QxKsCZaTnGAklE-k06VcP"}
+1e:null
+7:300
+27:true
+7:C
+26:0
+f:"$undefined"
+5:"$undefined"
+25:"$undefined"
+1f:"$undefined"

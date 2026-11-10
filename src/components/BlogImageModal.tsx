@@ -12,7 +12,7 @@ const BlogImageModal = ({ children, src, alt }: { children: ReactNode; src: stri
 
 			{isOpen && (
 				<div
-					className="fixed inset-0 z-30 md:pt-20 flex items-center justify-center bg-black/80 w-full h-full"
+					className="fixed inset-0 z-[60] flex h-full w-full cursor-zoom-out items-center justify-center bg-black/90"
 					onClick={() => setIsOpen(false)}
 				>
 					<div className="w-full h-full md:p-10 p-2.5 flex justify-center items-center">

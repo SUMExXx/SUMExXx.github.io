@@ -1,28 +1,17 @@
 import { type MetadataRoute } from 'next';
+import { blogs } from '@/lib/blogData/blogs';
+import { projects } from '@/lib/data/portfolio';
 export const dynamic = 'force-static';
+
+const base = process.env.NEXT_PUBLIC_BASE_URL;
 
 const sitemap = (): MetadataRoute.Sitemap => {
 	return [
-		{ url: `${process.env.NEXT_PUBLIC_BASE_URL}/`, lastModified: new Date(), changeFrequency: 'yearly', priority: 1.0 },
-		{
-			url: `${process.env.NEXT_PUBLIC_BASE_URL}/project`,
-			lastModified: new Date(),
-			changeFrequency: 'monthly',
-			priority: 0.8,
-		},
-		{
-			url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog`,
-			lastModified: new Date(),
-			changeFrequency: 'weekly',
-			priority: 0.8,
-		},
-		//blogs
-		{
-			url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/deploy-any-backend-server-to-aws-ecs-with-auto-scaling`,
-			lastModified: new Date(),
-			changeFrequency: 'yearly',
-			priority: 0.7,
-		},
+		{ url: `${base}/`, lastModified: new Date(), changeFrequency: 'yearly', priority: 1.0 },
+		{ url: `${base}/projects/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+		{ url: `${base}/blog/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+		...projects.map((p) => ({ url: `${base}/projects/${p.slug}/`, lastModified: new Date(), priority: 0.7 })),
+		...blogs.map((b) => ({ url: `${base}/blog/${b.url}/`, lastModified: b.metadata.modifiedTime, priority: 0.7 })),
 	];
 };
 

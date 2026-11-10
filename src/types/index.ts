@@ -13,12 +13,6 @@ export type WebData = {
 	keywords: string[];
 };
 
-export type FeaturedItems = {
-	image: string;
-	link: string;
-	text: string;
-};
-
 export type Socials = {
 	linkedIn: string;
 	instagram: string;
@@ -46,14 +40,6 @@ export type ProjectPreviews = {
 	flutter: ProjectPreview[];
 	uiux: ProjectPreview[];
 	graphics: ProjectPreview[];
-};
-
-export type TimelineItem = {
-	title: string;
-	subtitle: string;
-	text: string;
-	image: string;
-	year: string;
 };
 
 export type BlogCodeBlockData = {

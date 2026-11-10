@@ -1,0 +1,49 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/1ua2kfq9s-me6.js"
+3:I[39756,["$2"],"default"]
+4:I[37457,["$2"],"default"]
+9:"/_next/static/chunks/019rvcojw5kyt.js"
+a:"/_next/static/chunks/0566xv07l9w9r.js"
+b:"/_next/static/chunks/1m6srf9ommorg.js"
+c:I[44500,["$9","$a","$b"],"default"]
+d:I[39365,["$9","$a","$b"],"default"]
+e:I[39365,["$9","$a","$b"],"Footer"]
+11:"/_next/static/chunks/2zdmxv_p9kk0q.js"
+12:I[79520,["$9","$a","$b","$11"],""]
+15:"/_next/static/chunks/0g_-9aww1--1v.js"
+16:"/_next/static/chunks/2w6_rpqhfe29-.js"
+17:"/_next/static/chunks/03e5yy98_mgss.js"
+18:I[73219,["$9","$a","$b","$11","$15","$16","$17"],"SectionHead"]
+19:I[73219,["$9","$a","$b","$11","$15","$16","$17"],"Rise"]
+1a:I[22016,["$9","$a","$b","$11","$15","$16","$17"],""]
+1b:I[85437,["$9","$a","$b","$11","$15","$16","$17"],"Image"]
+22:"ViewportBoundary"
+23:I[97367,["$2"],"$22"]
+24:"MetadataBoundary"
+25:I[97367,["$2"],"$24"]
+26:"$Sreact.suspense"
+27:I[27201,["$2"],"IconMark"]
+:HL["/_next/static/chunks/2z6y0dkeo_uko.css","style"]
+6:X
+6:C
+7:X
+14:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","main",null,{"data-scene":4,"className":"mx-auto w-full max-w-[1200px] px-5 pt-36 pb-20 md:px-8","children":[["$","$L18",null,{"index":"//","kicker":"Writing","title":"THE BLOG."}],["$","div",null,{"className":"grid gap-6 sm:grid-cols-2 lg:grid-cols-3","children":[["$","$L19","deploy-any-backend-server-to-aws-ecs-with-auto-scaling",{"i":0,"children":["$","$L1a",null,{"href":"/blog/deploy-any-backend-server-to-aws-ecs-with-auto-scaling/","className":"group block h-full","children":["$","article",null,{"className":"sd3-panel  flex h-full flex-col p-3","children":[["$","div",null,{"className":"relative aspect-[16/10] overflow-hidden bg-black","children":["$","$L1b",null,{"src":"/images/blogs/blog1/cover.png","alt":"","fill":true,"sizes":"(max-width: 640px) 100vw, 33vw","className":"object-cover transition-transform duration-700 group-hover:scale-[1.04]"}]}],["$","div",null,{"className":"flex flex-1 flex-col p-3 pt-5","children":[["$","time",null,{"className":"font-mono text-[11px] tracking-[0.2em] text-(--sd-violet) uppercase","children":"26 Sept 2025"}],["$","h2",null,{"className":"sd3-display mt-3 text-[22px] leading-tight transition-colors group-hover:text-(--sd-green)","children":"Deploy any backend server to AWS ECS with auto-scaling"}],["$","p",null,{"className":"mt-3 line-clamp-3 text-[14px] leading-relaxed text-white/60","children":"Step-by-step guide to deploying any backend server to AWS ECS (Fargate or EC2) with auto-scaling. Learn containerization, task definitions, load balancing, scaling policies, and CI/CD best practices."}],"$L1c"]}]]}]}]}]]}]]}],["$L1d","$L1e","$L1f"],"$L20"]}],"p":"$@21","v":null,"s":"$7"}}]]
+10:[["children",{"s":"blog","h":96,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/2zdmxv_p9kk0q.js","async":true}]],[["$","$L12",null,{"async":true,"src":"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2246017499375159","crossOrigin":"anonymous"}],["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}]}]]]}],"p":"$@13","v":null,"s":"$7"},"c":"$Q14"}]]
+8:[["children",{"s":"(portfolio)","h":112,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2z6y0dkeo_uko.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/019rvcojw5kyt.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0566xv07l9w9r.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/1m6srf9ommorg.js","async":true}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"sd3 TkWB7W_variable p9PK3a_variable CxiPNW_variable antialiased","children":["$","$Lc",null,{"children":[["$","$Ld",null,{}],["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:t:t:d:r:props:children:1:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:t:t:d:r:props:children:1:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]]}],["$","$Le",null,{}]]}]}]}]]}],"p":"$@f","v":null,"s":"$7"},"c":"$Q10"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]]}],"p":"$@5","v":"$6","s":"$7"},"c":"$Q8"},"h":{"r":["$","$1","h",{"children":[null,["$","$L23",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#030106"}]]}],["$","$L25",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$26",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Blog · Suman Debnath"}],["$","meta","1",{"name":"description","content":"Notes on backends, cloud deployments and AI platform engineering by Suman Debnath."}],["$","meta","2",{"name":"google-adsense-account","content":"ca-pub-2246017499375159"}],["$","link","3",{"rel":"icon","href":"/favicon.ico?favicon.1ngwem6g790zf.ico","sizes":"48x48","type":"image/x-icon"}],["$","$L27","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@28","v":null,"s":"$7"}},"a":"$@29","u":"$@2a","b":"QxKsCZaTnGAklE-k06VcP"}
+2b:I[97367,["$2"],"OutletBoundary"]
+1c:["$","span",null,{"className":"mt-5 font-mono text-[12px] tracking-[0.2em] text-(--sd-green) uppercase","children":"Read →"}]
+1d:["$","script","script-0",{"src":"/_next/static/chunks/0g_-9aww1--1v.js","async":true}]
+1e:["$","script","script-1",{"src":"/_next/static/chunks/2w6_rpqhfe29-.js","async":true}]
+1f:["$","script","script-2",{"src":"/_next/static/chunks/03e5yy98_mgss.js","async":true}]
+20:["$","$L2b",null,{"children":["$","$26",null,{"name":"Next.MetadataOutlet","children":"$@2c"}]}]
+7:300
+2c:null
+2a:true
+7:C
+29:0
+13:"$undefined"
+f:"$undefined"
+5:"$undefined"
+28:"$undefined"
+21:"$undefined"

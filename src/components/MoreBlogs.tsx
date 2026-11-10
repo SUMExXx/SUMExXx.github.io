@@ -2,47 +2,28 @@ import Link from 'next/link';
 import { blogs } from '@/lib/blogData/blogs';
 import type { Blog } from '@/types';
 
-const MoreBlogs = ({ currentBlog }: { currentBlog?: Blog }) => {
-	if (currentBlog && blogs.filter((blog) => blog.url !== currentBlog.url).length === 0) {
-		return <></>;
-	}
-
+const MoreBlogs = ({ currentBlog }: { currentBlog: Blog }) => {
+	const others = blogs.filter((b) => b.url !== currentBlog.url).slice(0, 10);
 	return (
-		<div className="flex sticky top-[110px] md:gap-[40px] gap-[20px] flex-col justify-start lg:items-start items-center lg:max-w-[400px] w-full rounded-2xl bg-main-background md:p-[40px] p-[20px]">
-			<h1 className="md:text-[20px] test-[16px] text-white">More Blogs</h1>
-			<div className="flex flex-col justify-start items-start overflow-hidden w-full">
-				{currentBlog
-					? blogs
-							.filter((blog) => blog.url !== currentBlog.url)
-							.slice(0, 10)
-							.map((blog, index) => (
-								<div key={index} className="w-full flex flex-col items-center lg:items-start">
-									<Link
-										href={`/blog/${blog.url}`}
-										title={blog.metadata.title}
-										className="text-sm text-main-secondary block whitespace-nowrap truncate text-ellipsis text-overflow-ellipsis overflow-hidden w-full text-center lg:text-left"
-										style={{ textOverflow: 'ellipsis' }}
-									>
-										{blog.metadata.title}
-									</Link>
-									{index < blogs.length - 1 && <hr className="my-2 border-gray-600 w-full" />}
-								</div>
-							))
-					: blogs.slice(0, 10).map((blog, index) => (
-							<div key={index} className="w-full flex flex-col items-center lg:items-start">
-								<Link
-									href={`/blog/${blog.url}`}
-									title={blog.metadata.title}
-									className="text-sm text-main-secondary block whitespace-nowrap truncate text-ellipsis text-overflow-ellipsis overflow-hidden w-full text-center lg:text-left"
-									style={{ textOverflow: 'ellipsis' }}
-								>
-									{blog.metadata.title}
-								</Link>
-								{index < blogs.length - 1 && <hr className="my-2 border-gray-600 w-full" />}
-							</div>
-						))}
-			</div>
-		</div>
+		<aside className="sd3-panel is-alt p-6 lg:sticky lg:top-28">
+			<h2 className="font-mono text-[11px] tracking-[0.25em] text-(--sd-green) uppercase">› More posts</h2>
+			{others.length ? (
+				<ul className="mt-4 divide-y divide-white/10">
+					{others.map((b) => (
+						<li key={b.url}>
+							<Link href={`/blog/${b.url}/`} className="block py-3 text-[14px] text-white/75 hover:text-(--sd-green)">
+								{b.metadata.title}
+							</Link>
+						</li>
+					))}
+				</ul>
+			) : (
+				<p className="mt-4 text-[14px] text-white/50">More posts are on the way.</p>
+			)}
+			<Link href="/projects/" className="sd3-btn sd3-btn-ghost mt-6 !px-4 !py-2.5 !text-[11px]">
+				See projects →
+			</Link>
+		</aside>
 	);
 };
 

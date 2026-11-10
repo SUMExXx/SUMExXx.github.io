@@ -1,0 +1,9 @@
+:HL["/_next/static/chunks/2z6y0dkeo_uko.css","style"]
+:HL["/_next/static/media/237858b39a32779d-s.p.2cyn07wtgehh0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/53897e768d329f66-s.p.3t6q91iet4nsy.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/9d9d8fde33b299ed-s.p.1bk8_xp319hr4.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+4:[["children",{"s":"__PAGE__","h":160}]]
+3:[["children",{"s":{"n":"slug","t":"d","k":"prepindia","s":[]},"h":65632,"c":"$Q4"}]]
+2:[["children",{"s":"projects","h":131168,"c":"$Q3"}]]
+1:[["children",{"s":"(portfolio)","h":131184,"c":"$Q2"}]]
+0:{"b":"QxKsCZaTnGAklE-k06VcP","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}

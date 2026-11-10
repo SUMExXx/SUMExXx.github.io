@@ -37,6 +37,26 @@ for (const f of pages) {
 	writeFileSync(f, html);
 }
 
+/*
+ * Next 16's static export writes route-segment prefetch data as nested folders
+ * (`__next.<seg>/projects/$d$slug/__PAGE__.txt`) but the client requests them dot-joined
+ * (`__next.<seg>.projects.$d$slug.__PAGE__.txt`). Without a server to rewrite, every prefetch
+ * 404s and client navigation degrades to full reloads, so write the dot-joined copies too.
+ */
+const files = (dir) =>
+	readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+		const p = path.join(dir, e.name);
+		return e.isDirectory() ? files(p) : [p];
+	});
+let flattened = 0;
+for (const f of files(OUT)) {
+	const parts = f.split(path.sep);
+	const i = parts.findIndex((s) => s.startsWith('__next.'));
+	if (i < 0 || i === parts.length - 1) continue;
+	writeFileSync(path.join(...parts.slice(0, i), parts.slice(i).join('.')), readFileSync(f));
+	flattened++;
+}
+
 // .published lists what the previous run copied, so entries dropped from the build get removed.
 const MANIFEST = '.published';
 const names = readdirSync(OUT);
@@ -50,4 +70,4 @@ for (const name of names) {
 	cpSync(path.join(OUT, name), dest, { recursive: true });
 }
 
-console.log(`Published ${pages.length} pages to the repo root with index.css (${hrefs.length} chunks merged).`);
+console.log(`Published ${pages.length} pages to the repo root with index.css (${hrefs.length} chunks merged, ${flattened} prefetch files flattened).`);
